@@ -1,3 +1,7 @@
+// Import js files
+import * as utils from "./utils.js";
+
+// Start Code
 ZOHO.embeddedApp.on("PageLoad", async (data) => {
   let getEntity = data?.Entity;
   let getEntityIds = data?.EntityId;
@@ -17,8 +21,10 @@ ZOHO.embeddedApp.on("PageLoad", async (data) => {
     allData.push(...(response?.data || []));
   }
 
+  // Used Function from another JS file
+  let getowner = utils.returnOwner(allData);
   document.getElementById("allData").innerText = JSON.stringify(
-    allData,
+    getowner,
     null,
     2
   );
